@@ -2,7 +2,7 @@
 
 ### Blog pessoal desenvolvido com o framework Vite e React.js.
 
-## ![Print da tela inicial do blog](https://github.com/nicomoraes/blog-vite-react-ts/resources/print-home.png)
+## ![Print da tela inicial do blog](https://github.com/nicomoraes/blog-vite-react-ts/blob/master/resources/print-home.png)
 
 ---
 
