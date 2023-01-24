@@ -3,7 +3,7 @@ import React from 'react';
 import { cld } from '@service/cloudinary';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
-import { AdvancedImage, placeholder, responsive } from '@cloudinary/react';
+import { AdvancedImage, responsive } from '@cloudinary/react';
 
 const imageSizes = {
   article: { width: 800, height: 300 },
@@ -19,15 +19,9 @@ type Props = {
 export const CloudinaryImage: React.FC<Props> = ({ link, size }) => {
   const myImage = cld.image(link.substring(link.indexOf('blog')));
 
-  // noinspection JSSuspiciousNameCombination
   myImage.resize(
     fill().width(imageSizes[size].width).height(imageSizes[size].height).gravity(autoGravity()),
   );
 
-  return (
-    <AdvancedImage
-      cldImg={myImage}
-      plugins={[responsive({ steps: [640, 768, 1024] }), placeholder({ mode: 'blur' })]}
-    />
-  );
+  return <AdvancedImage cldImg={myImage} plugins={[responsive({ steps: [640, 768, 1024] })]} />;
 };
