@@ -1,19 +1,28 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useSearchParams } from 'react-router-dom';
 import { Container, StyledInput, StyledButton } from './styles';
 
-interface SearchInputProps extends HTMLAttributes<HTMLInputElement> {
-  onSearchClick?(): void;
-  value: string;
-}
+type SearchInputProps = HTMLAttributes<HTMLInputElement>;
 
-export const SearchInput: React.FC<SearchInputProps> = ({ onSearchClick, value, ...rest }) => {
+export const SearchInput: React.FC<SearchInputProps> = ({ ...rest }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handlePostSearch = () => {
+    const inputValue = inputRef.current?.value;
+    !inputValue || inputValue === ''
+      ? searchParams.delete('title')
+      : searchParams.set('title', inputValue || '');
+    setSearchParams(searchParams);
+  };
+
   return (
     <Container>
-      <StyledButton onClick={onSearchClick}>
+      <StyledButton onClick={handlePostSearch}>
         <AiOutlineSearch color={'white'} size={20} style={{ margin: 'auto', display: 'block' }} />
       </StyledButton>
-      <StyledInput placeholder={'Pesquisar'} value={value} {...rest} />
+      <StyledInput placeholder={'Pesquisar'} ref={inputRef} {...rest} />
     </Container>
   );
 };
