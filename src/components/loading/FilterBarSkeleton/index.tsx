@@ -1,6 +1,6 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useTheme } from 'styled-components';
-import { Container } from './styles';
+
 export const FilterBarSkeleton = () => {
   const {
     COLORS: { PRIMARY_GREY_200, PRIMARY_GREY_300, PRIMARY_BLACK_500 },
