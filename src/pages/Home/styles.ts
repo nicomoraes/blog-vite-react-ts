@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box } from '@components/Layout/Box';
+import { Box } from '@components/layout/Box';
 
 export const LandingSection = styled.section`
   width: 100%;
