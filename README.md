@@ -41,7 +41,7 @@ import Button from '@components/Button';
 VITE_CLOUDINARY_CLOUD_NAME
 VITE_CLOUDINARY_CLOUD_APIKEY=
 VITE_CLOUDINARY_CLOUD_APISECRET=
-VITE_SERVER_PORT=
+VITE_SERVER_API=
 ```
 
 5. Inicie o projeto: `npm run dev` ou `yarn dev`
