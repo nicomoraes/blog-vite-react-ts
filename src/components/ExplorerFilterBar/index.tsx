@@ -6,12 +6,16 @@ import { get } from '@lib/get';
 import { Category } from '@interfaces/category';
 import { ExplorerFilterButton } from '@components/buttons/ExplorerFilterButton';
 import { Container, FiltersGrid } from './styles';
+import { FilterBarSkeleton } from '@components/loading/FilterBarSkeleton';
+import { FilterBarError } from '@components/error/FilterBarError';
 
 export const ExplorerFilterBar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const explorerButton = useRef<HTMLButtonElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const { data } = useQuery<Category[], Error>('categories', () => get('/categories'));
+  const { data, isLoading, isError } = useQuery<Category[], Error>('categories', () =>
+    get('/categories'),
+  );
 
   const handleCategorySelection = (index: number, description: string) => {
     if (selectedIndex === index) {
@@ -27,7 +31,12 @@ export const ExplorerFilterBar: React.FC = () => {
   return (
     <Container>
       <FiltersGrid numberOfElements={(data && data.length) ?? 0}>
-        {data &&
+        {isLoading ? (
+          <FilterBarSkeleton />
+        ) : isError ? (
+          <FilterBarError />
+        ) : (
+          data &&
           data.map((cat, index) => {
             return (
               <ExplorerFilterButton
@@ -38,7 +47,8 @@ export const ExplorerFilterBar: React.FC = () => {
                 onClick={() => handleCategorySelection(index, cat.description)}
               />
             );
-          })}
+          })
+        )}
       </FiltersGrid>
     </Container>
   );
