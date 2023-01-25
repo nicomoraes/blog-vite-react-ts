@@ -23,4 +23,9 @@ export const StyledButton = styled(Button)<StyledButtonProps>`
     background-color: ${({ theme, secondary }) =>
       secondary ? theme.COLORS.PRIMARY_GREY_300 : theme.COLORS.PRIMARY_GREY_400};
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.COLORS.PRIMARY_GREY_400};
+    cursor: default;
+  }
 `;
