@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { get } from '@lib/get';
-import { Post } from '@interfaces/post';
+import { IPost } from '@interfaces/post';
 import { SlideButton } from '@components/buttons/SlideButton';
 import { CloudinaryImage } from '@components/images/CloudinaryImage';
 import { PostSlideError } from '@components/error/PostSlideError';
@@ -16,7 +16,7 @@ export const PostSlide = () => {
     data: posts,
     isLoading,
     isError,
-  } = useQuery<Post[], Error>('featured', () => get('/posts/featured'));
+  } = useQuery<IPost[], Error>('featured', () => get('/posts/featured'));
 
   return isLoading ? (
     <PostSlideSkeleton />

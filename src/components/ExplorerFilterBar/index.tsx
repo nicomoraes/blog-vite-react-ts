@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 
 import { get } from '@lib/get';
-import { Category } from '@interfaces/category';
+import { ICategory } from '@interfaces/category';
 import { ExplorerFilterButton } from '@components/buttons/ExplorerFilterButton';
 import { Container, FiltersGrid } from './styles';
 import { FilterBarSkeleton } from '@components/loading/FilterBarSkeleton';
@@ -13,7 +13,7 @@ export const ExplorerFilterBar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const explorerButton = useRef<HTMLButtonElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const { data, isLoading, isError } = useQuery<Category[], Error>('categories', () =>
+  const { data, isLoading, isError } = useQuery<ICategory[], Error>('categories', () =>
     get('/categories'),
   );
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Post } from '@interfaces/post';
+import { IPost } from '@interfaces/post';
 import { CloudinaryImage } from '@components/images/CloudinaryImage';
 import { AccessButton, Container, Content, Summary, TagsBox, Title } from './styles';
 
-export const PostCard: React.FC<Post> = ({ title, description, coverLink, slug, categories }) => {
+export const PostCard: React.FC<IPost> = ({ title, description, coverLink, slug, categories }) => {
   return (
     <Container>
       <CloudinaryImage link={coverLink ?? ''} size={'card'} />

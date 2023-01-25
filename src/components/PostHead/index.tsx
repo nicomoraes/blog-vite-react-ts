@@ -1,10 +1,10 @@
 import React from 'react';
-import { Post as PostType } from '@interfaces/post';
+import { IPost } from '@interfaces/post';
 import { CloudinaryImage } from '@components/images/CloudinaryImage';
 import { Container, PublicationDate, Summary, Title, Tags } from './styles';
 import { formatDate } from '@lib/format';
 
-export const PostHead: React.FC<PostType> = ({
+export const PostHead: React.FC<IPost> = ({
   title,
   description,
   coverLink,

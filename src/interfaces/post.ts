@@ -1,6 +1,6 @@
-import { Category } from './category';
+import { ICategory } from './category';
 
-export interface Post {
+export interface IPost {
   id: string;
   title: string;
   content?: string;
@@ -9,9 +9,14 @@ export interface Post {
   created_at: string;
   slug: string;
   updated_at: string;
-  categories: Categories[];
+  categories: TCategories[];
 }
 
-type Categories = {
-  category: Category;
+type TCategories = {
+  category: ICategory;
 };
+
+export interface IExplorerPostPagination {
+  posts: IPost[];
+  nextPage: number;
+}

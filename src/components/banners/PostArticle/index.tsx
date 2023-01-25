@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Post } from '@interfaces/post';
+import { IPost } from '@interfaces/post';
 import { PrimaryButton } from '@components/buttons/PrimaryButton';
 import { CloudinaryImage } from '@components/images/CloudinaryImage';
 import { Container, LinkButtonBox, PostInformation, Summary, Title } from './styles';
 
-type Props = Post;
+type Props = IPost;
 
 export const PostArticle: React.FC<Props> = ({ title, description, coverLink, slug }) => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { get } from '@lib/get';
-import { Post as PostType } from '@interfaces/post';
+import { IPost } from '@interfaces/post';
 import { PostHead } from '@components/PostHead';
 import { PostBody } from '@components/PostBody';
 import { Container } from '@components/layout/Container';
@@ -16,7 +16,7 @@ const Post: React.FC = () => {
     data: post,
     isError,
     isLoading,
-  } = useQuery<PostType, Error>('posts', () => get(`/posts/get/${slug}`));
+  } = useQuery<IPost, Error>('posts', () => get(`/posts/get/${slug}`));
 
   return (
     <Container>
@@ -26,7 +26,7 @@ const Post: React.FC = () => {
         <PostPageError />
       ) : (
         <>
-          <PostHead {...(post as PostType)} />
+          <PostHead {...(post as IPost)} />
           <PostBody markdown={post?.content} />
         </>
       )}
