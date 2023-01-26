@@ -15,8 +15,10 @@ export const Container = styled.div`
     border-top-right-radius: 10px;
   }
 
-  &:hover {
-    transform: scale(1.1);
+  @media only screen and (min-width: 1024px) {
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 

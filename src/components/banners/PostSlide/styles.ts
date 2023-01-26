@@ -44,7 +44,7 @@ export const Title = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.HEADING_2};
   color: ${({ theme }) => theme.COLORS.PRIMARY_WHITE_100};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: ${({ theme }) => theme.FONT_SIZE.HEADING_3};
   }
 `;

@@ -25,7 +25,8 @@ export const PostSlide = () => {
   ) : (
     <Container>
       <Carousel
-        autoPlay
+        showThumbs={false}
+        autoPlay={false}
         infiniteLoop
         renderArrowNext={(clickHandler) => (
           <SlideButton arrowDirection={'right'} onClick={() => clickHandler()} />
