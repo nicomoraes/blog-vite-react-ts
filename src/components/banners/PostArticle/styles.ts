@@ -10,6 +10,12 @@ export const Container = styled.article`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
+
+  @media (max-width: 640px) {
+    img {
+      height: 200px;
+    }
+  }
 `;
 
 export const PostInformation = styled.div`
