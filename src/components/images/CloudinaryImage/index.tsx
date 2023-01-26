@@ -3,7 +3,7 @@ import React from 'react';
 import { cld } from '@service/cloudinary';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
-import { AdvancedImage, responsive } from '@cloudinary/react';
+import { AdvancedImage, responsive, placeholder, lazyload } from '@cloudinary/react';
 
 const imageSizes = {
   article: { width: 800, height: 300 },
@@ -23,5 +23,14 @@ export const CloudinaryImage: React.FC<Props> = ({ link, size }) => {
     fill().width(imageSizes[size].width).height(imageSizes[size].height).gravity(autoGravity()),
   );
 
-  return <AdvancedImage cldImg={myImage} plugins={[responsive({ steps: [640, 768, 1024] })]} />;
+  return (
+    <AdvancedImage
+      cldImg={myImage}
+      plugins={[
+        responsive({ steps: [240, 640, 768, 1024] }),
+        lazyload(),
+        placeholder({ mode: 'predominant-color' }),
+      ]}
+    />
+  );
 };
