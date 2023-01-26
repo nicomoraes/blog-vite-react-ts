@@ -5,6 +5,12 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   margin: 20px auto 5px auto;
+
+  @media (max-width: 640px) {
+    img {
+      height: 100px;
+    }
+  }
 `;
 
 export const Title = styled.h1`
