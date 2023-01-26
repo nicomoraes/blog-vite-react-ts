@@ -13,8 +13,12 @@ export const ExplorerFilterBar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const explorerButton = useRef<HTMLButtonElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const { data, isLoading, isError } = useQuery<ICategory[], Error>('categories', () =>
-    get('/categories'),
+  const { data, isLoading, isError } = useQuery<ICategory[], Error>(
+    'categories',
+    () => get('/categories'),
+    {
+      refetchOnWindowFocus: false,
+    },
   );
 
   const handleCategorySelection = (index: number, description: string) => {

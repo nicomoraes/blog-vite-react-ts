@@ -8,7 +8,9 @@ import { PostCardSkeleton } from '@components/loading/PostCardSkeleton';
 import { Container } from './styles';
 
 export const HomePostCardsGrid = () => {
-  const { data: posts, isLoading } = useQuery<IPost[], Error>('cards', () => get('/posts/cards'));
+  const { data: posts, isLoading } = useQuery<IPost[], Error>('cards', () => get('/posts/cards'), {
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <Container>

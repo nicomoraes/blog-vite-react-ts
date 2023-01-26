@@ -24,6 +24,7 @@ export const ExplorerArticlesSection = () => {
     queryKey: ['posts', category, title],
     queryFn: async ({ pageParam = 0 }) => get('/posts', { category, title, page: pageParam }),
     getNextPageParam: (lastGroup) => (lastGroup.nextPage ? lastGroup.nextPage : null),
+    refetchOnWindowFocus: false,
   });
 
   const posts = useMemo(() => {
