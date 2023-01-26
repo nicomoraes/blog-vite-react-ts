@@ -18,7 +18,7 @@ const Post: React.FC = () => {
     (async () => {
       try {
         setLoading(true);
-        const resp = await get(`/postss/get/${slug}`);
+        const resp = await get(`/posts/get/${slug}`);
         setPost(resp);
         setLoading(false);
       } catch (error) {
