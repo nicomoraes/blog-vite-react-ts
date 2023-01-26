@@ -18,13 +18,11 @@ const Post: React.FC = () => {
     (async () => {
       try {
         setLoading(true);
-        const resp = await get(`/posts/get/${slug}`);
+        const resp = await get(`/postss/get/${slug}`);
         setPost(resp);
-        console.log(resp);
         setLoading(false);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(error);
           setError(error);
           setLoading(false);
         }
