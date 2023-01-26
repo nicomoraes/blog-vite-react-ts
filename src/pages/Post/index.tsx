@@ -1,5 +1,4 @@
-import React from 'react';
-import { useQuery } from 'react-query';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { get } from '@lib/get';
 import { IPost } from '@interfaces/post';
@@ -11,23 +10,38 @@ import { PostPageSkeleton } from '@components/loading/PostPageSkeleton';
 
 const Post: React.FC = () => {
   const { slug } = useParams();
+  const [post, setPost] = useState<IPost>({} as IPost);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  const {
-    data: post,
-    isError,
-    isLoading,
-  } = useQuery<IPost, Error>('posts', () => get(`/posts/get/${slug}`));
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
+        const resp = await get(`/posts/get/${slug}`);
+        setPost(resp);
+        console.log(resp);
+        setLoading(false);
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error(error);
+          setError(error);
+          setLoading(false);
+        }
+      }
+    })();
+  }, [slug]);
 
   return (
     <Container>
-      {isLoading ? (
+      {loading ? (
         <PostPageSkeleton />
-      ) : isError ? (
+      ) : error ? (
         <PostPageError />
       ) : (
         <>
-          <PostHead {...(post as IPost)} />
-          <PostBody markdown={post?.content} />
+          <PostHead {...post} />
+          <PostBody markdown={post.content} />
         </>
       )}
     </Container>
