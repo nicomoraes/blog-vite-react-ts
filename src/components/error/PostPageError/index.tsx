@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import sad_emoji from '@assets/lottie-json/sad-emoji.json';
 import { PrimaryButton } from '@components/buttons/PrimaryButton';
