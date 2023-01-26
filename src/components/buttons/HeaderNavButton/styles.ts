@@ -37,5 +37,9 @@ export const StyledButton = styled(Button)`
     background-color: ${({ theme }) => theme.COLORS.PRIMARY_BLACK_500};
     border-radius: 5px;
     color: ${({ theme }) => theme.COLORS.PRIMARY_WHITE_100};
+
+    &:active {
+      background-color: ${({ theme }) => theme.COLORS.PRIMARY_BLACK_500}90;
+    }
   }
 `;
