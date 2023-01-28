@@ -23,7 +23,13 @@ export const PostBody: React.FC<Props> = ({ markdown }) => {
     code({ node, inline, className, children, ...props }: CodeBlockProps) {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
-        <SyntaxHighlighter style={vscDarkPlus} language={match[1]} PreTag='div' {...props}>
+        <SyntaxHighlighter
+          style={vscDarkPlus}
+          language={match[1]}
+          PreTag='div'
+          {...props}
+          customStyle={{ fontFamily: 'sans-serif' }}
+        >
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       ) : (

@@ -21,10 +21,4 @@ export default {
     BODY: '1.12rem', //18 px
     CAPTION: '1rem', //14px
   },
-
-  SCREEN_SIZES: {
-    DESKTOP: '1024px',
-    TABLET: '768px',
-    MOBILE: '640px',
-  },
 };

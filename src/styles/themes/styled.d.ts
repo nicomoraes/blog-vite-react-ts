@@ -24,11 +24,5 @@ declare module 'styled-components' {
       BODY: string;
       CAPTION: string;
     };
-
-    SCREEN_SIZES: {
-      DESKTOP: string;
-      TABLET: string;
-      MOBILE: string;
-    };
   }
 }
